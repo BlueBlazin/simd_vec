@@ -1,7 +1,15 @@
 [package]
 name = "simd_vec"
 version = "0.1.0"
+authors = ["github.com/BlueBlazin"]
 edition = "2021"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/BlueBlazin/simd_vec"
+readme = "README.md"
+homepage = "https://github.com/BlueBlazin/simd_vec"
+description = "Arbitrary sized SIMD vectors for Rust"
+keywords = ["simd", "vector", "multiprocessor"]
+categories = ["data-structures"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
