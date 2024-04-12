@@ -1,4 +1,5 @@
 use rayon::prelude::*;
+use std::fmt::Display;
 use std::iter::Sum;
 use std::ops::{Add, Mul, Sub};
 use std::ops::{Index, IndexMut};
@@ -151,6 +152,21 @@ impl<T: SimdElement> IndexMut<usize> for SimdVec<T> {
         );
         // 1
         self.data[offset].get_mut(index)
+    }
+}
+
+impl<T: SimdElement + Display> Display for SimdVec<T> {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(
+            f,
+            "[{}]",
+            self.data
+                .iter()
+                .flat_map(|x| x.as_array())
+                .map(|x| format!("{x}"))
+                .collect::<Vec<_>>()
+                .join(", ")
+        )
     }
 }
 

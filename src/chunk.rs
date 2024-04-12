@@ -13,6 +13,18 @@ pub enum SimdChunk<T: SimdElement> {
 }
 
 impl<T: SimdElement> SimdChunk<T> {
+    pub fn as_array(&self) -> &[T] {
+        match self {
+            SimdChunk::Width1(x) => x.as_array(),
+            SimdChunk::Width2(x) => x.as_array(),
+            SimdChunk::Width4(x) => x.as_array(),
+            SimdChunk::Width8(x) => x.as_array(),
+            SimdChunk::Width16(x) => x.as_array(),
+            SimdChunk::Width32(x) => x.as_array(),
+            SimdChunk::Width64(x) => x.as_array(),
+        }
+    }
+
     pub fn copy_to_slice(&self, dest: &mut [T]) {
         match self {
             SimdChunk::Width1(x) => x.copy_to_slice(dest),
